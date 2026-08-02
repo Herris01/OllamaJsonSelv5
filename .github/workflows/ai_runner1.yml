@@ -58,16 +58,13 @@ jobs:
           winget install --id Ollama.Ollama -e --accept-source-agreements --accept-package-agreements
             
       - name: Add Ollama to PATH
-        run: |
-          echo "C:\Program Files\Ollama" >> $env:GITHUB_PATH
+        run: echo "C:\Program Files\Ollama" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        # run: |
+        #   echo "C:\Program Files\Ollama" >> $env:GITHUB_PATH
 
       - name: Pull lightweight model
         run: ollama pull llama3.1:3b          
 
-
-      # Pull lightweight model (fits free runner)
-      - name: Pull lightweight model
-        run: ollama pull llama3.1:3b
 
       # Run tests with local Ollama
       - name: Run Selenium tests (local AI)
