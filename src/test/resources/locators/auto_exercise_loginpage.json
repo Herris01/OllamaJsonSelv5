@@ -1,0 +1,17 @@
+{
+  "username" : {
+    "type" : "xpath",
+    "value" : "//input[@data-qa='signup-name1']"
+
+  },
+  "password" : {
+    "type" : "xpath",
+    "value" : "//input[@data-qa='signup-email']"
+
+  },
+  "loginBtn" : {
+    "type" : "xpath",
+    "value" : "//button[@data-qa='signup-button1']"
+
+  }
+}

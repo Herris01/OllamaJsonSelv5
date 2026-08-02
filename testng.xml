@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="ai.selfheal.tests.ExecutionTimeListener" />
+    </listeners>
+
+    <test verbose="2" preserve-order="true" name="OllamaJsonSelv5">
+        <classes>
+            <class name="ai.selfheal.tests.HRMLoginTest"/>
+        </classes>
+    </test>
+</suite>

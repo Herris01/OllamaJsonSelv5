@@ -1,0 +1,12 @@
+{
+  "username": {
+    "type": "chained",
+    "chain": [
+      {
+        "type": "xpath",
+        "value": "//div[contains(@class,'oxd-input-group')][.//label[normalize-space()='Username']]"
+      },
+      { "type": "css", "value": "input" }
+    ]
+  }
+}

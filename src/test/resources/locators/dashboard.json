@@ -1,0 +1,6 @@
+{
+  "user_dropdown": {
+    "type": "xpath",
+    "value": "//span[@class='oxd-userdropdown-tab']"
+  }
+}

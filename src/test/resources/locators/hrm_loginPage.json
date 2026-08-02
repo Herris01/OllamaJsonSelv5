@@ -1,0 +1,15 @@
+{
+  "username" : {
+    "type" : "name",
+    "value" : "username"
+  },
+  "password" : {
+    "type" : "name",
+    "value" : "password",
+    "chain" : null
+  },
+  "loginBtn" : {
+    "type" : "css",
+    "value" : "button[type='submit1']"
+  }
+}
