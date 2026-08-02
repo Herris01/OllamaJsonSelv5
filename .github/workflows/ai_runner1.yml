@@ -14,14 +14,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up JDK
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v3
         with:
           java-version: '21'
           distribution: 'temurin'
 
       # Cache Maven dependencies
       - name: Cache Maven packages
-        uses: actions/cache@v6
+        uses: actions/cache@v3
         with:
           path: C:\Users\runneradmin\.m2\repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -30,7 +30,7 @@ jobs:
 
       # Cache Ollama models (local option)
       - name: Cache Ollama models
-        uses: actions/cache@v6
+        uses: actions/cache@v3
         with:
           path: C:\Users\runneradmin\.ollama\models
           key: ollama-${{ runner.os }}
