@@ -1,0 +1,55 @@
+name: Self-Healing Selenium Tests (Windows)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v6
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # Cache Maven dependencies
+      - name: Cache Maven packages
+        uses: actions/cache@v6
+        with:
+          path: C:\Users\runneradmin\.m2\repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # Cache Ollama models (local option)
+      - name: Cache Ollama models
+        uses: actions/cache@v6
+        with:
+          path: C:\Users\runneradmin\.ollama\models
+          key: ollama-${{ runner.os }}
+
+      # Install Ollama (Windows)
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/download.sh -o ollama-install.sh
+          bash ollama-install.sh
+
+      # Pull lightweight model (fits free runner)
+      - name: Pull lightweight model
+        run: ollama pull llama3.1:3b
+
+      # Run tests with local Ollama
+      - name: Run Selenium tests (local AI)
+        run: mvn test
+
+      # Alternative: Run tests with remote AI endpoint
+      # Uncomment this block if you host Ollama remotely
+      # - name: Run Selenium tests (remote AI)
+      #   run: mvn test -Dollama.url=https://your-remote-server:11434/api/generate
