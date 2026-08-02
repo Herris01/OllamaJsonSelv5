@@ -63,8 +63,10 @@ jobs:
       #   #   echo "C:\Program Files\Ollama" >> $env:GITHUB_PATH
 
       - name: Pull lightweight model
-        run: '"C:\Program Files\Ollama\ollama.exe" pull llama3.1:3b'
+        # run: '"C:\Program Files\Ollama\ollama.exe" pull llama3.1:3b'
         # run: ollama pull llama3.1:3b          
+        run: |
+          & "C:\Program Files\Ollama\ollama.exe" pull llama3.1:3b
 
 
       # Run tests with local Ollama
