@@ -35,11 +35,27 @@ jobs:
           path: C:\Users\runneradmin\.ollama\models
           key: ollama-${{ runner.os }}
 
-      # Install Ollama (Windows)
+      # # Install Ollama (Windows)
+      # - name: Install Ollama
+      #   run: |
+      #     curl -fsSL https://ollama.com/download.sh -o ollama-install.sh
+      #     bash ollama-install.sh
+
+      # # Pull lightweight model (fits free runner)
+      # - name: Pull lightweight model
+      #   run: ollama pull llama3.1:3b
+
+      # Cache Ollama models (local option)
+      - name: Cache Ollama models
+        uses: actions/cache@v3
+        with:
+          path: C:\Users\runneradmin\.ollama\models
+          key: ollama-${{ runner.os }}
+
+      # Install Ollama (Windows via winget)
       - name: Install Ollama
         run: |
-          curl -fsSL https://ollama.com/download.sh -o ollama-install.sh
-          bash ollama-install.sh
+          winget install --id Ollama.Ollama -e --accept-source-agreements --accept-package-agreements
 
       # Pull lightweight model (fits free runner)
       - name: Pull lightweight model
